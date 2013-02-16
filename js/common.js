@@ -17,6 +17,7 @@ function cl() {
   uhash: (document.cookie.match(/uhash=([a-z0-9]{32})/i) || ['',''])[1].trim(),
   avatar: function(uid) { return "http://www.eoeandroid.com/uc_server/avatar.php?size=small&uid=" + uid; },
   homeUrl: function(uid) { return "http://my.eoe." + this.domain + '/' + uid; },
+  // blog, code等应用下每个用户的主页URL
   appUrl: function(uid) { var user_path = (this.app == 'code') ? 'users/' : ''; return 'http://' + this.app + '.eoe.' + this.domain + '/' + user_path + uid; },
   app_item: function() {
     return ({
@@ -24,5 +25,8 @@ function cl() {
      blog: function() { var m = location.pathname.match(/\/([0-9]*)\.html/); return m ? m[1] : 0;  }
     }[this.app])();
   },
+  // blog, code等应用详情页的item id
+  app_item_id: function() { return this.app_item(); },
+  // full original path
   fp: location.href.match(/http:\/\/[^/]*(\/.*)/)[1]
 }
