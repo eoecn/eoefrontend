@@ -51,6 +51,7 @@ function cl() {
 
 // 添加最近访客列表
 $(document).ready(function(){
+  // 避免重复加载
   if (($(".lastvisitor").length > 0) && !eoe.is_load_lastvisitor) { $.getJSON( 'http://code.eoe.' + eoe.domain + '/api/recent_visitors.json?pattern=' + eoe.app_item() + '&limit=42&app=' + eoe.app, function(data) {
     // 用js来添加自己为最近访客，并排除自己访问自己的情况
     var current_item_uid = 0;
