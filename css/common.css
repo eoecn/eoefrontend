@@ -65,7 +65,7 @@
 
 /*按钮样式*/
 
-.newBtn{float:left;border:0px;background:none;padding:0 5px;margin:0;overflow:hidden;+position:relative;+top:-1px;}
+.newBtn{float:left;border:0px;background:none;padding:0 5px;margin:0;overflow:hidden;}
  button:focus,input:focus,textarea:focus{outline:none;}
 .newBtn span{display:inline-block;white-space:nowrap;vertical-align:middle;height:30px;padding: 0 10px;text-align:center;font:14px/30px "Helvetica Neue",Helvetica,Arial,sans-serif;color:#fff;position:relative;z-index:0;}
 .newBtn,.newBtn:hover,.newBtn:hover span,.newBtn:hover .il,.newBtn:hover .ir{text-decoration:none;border:none;}
