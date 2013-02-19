@@ -1,4 +1,3 @@
-//= require underscore/underscore-min.js
 //= require common.js
 
 ;(function() {
