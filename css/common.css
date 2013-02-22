@@ -120,8 +120,7 @@
 .dropCase .dropContent{padding:0;}
 .sidebar .frame{padding:0 10px 10px;line-height:20px;}
 .style_none li{line-height:20px;}
-.popular_tags a{display:inline-block;width:auto !important;max-width: 180px;height: 20px;color: #0088CC;line-height: 20px; overflow: hidden; margin-right: 5px; margin-top: 5px;padding:0 8px;background-color: #E0EAF1;border-bottom: 1px solid #3E6D8E;border-right: 1px solid #7F9FB6;font-size: 12px;vertical-align: bottom;font-size:12px;white-space:nowrap;font-family:'宋体';}
-.popular_tags a:hover{color:#005580;text-decoration:none;}
+
 
 
 
