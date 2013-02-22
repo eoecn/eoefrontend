@@ -126,6 +126,6 @@
 .sidebar .frame{padding:0 10px 10px;line-height:20px;}
 .style_none li{line-height:20px;}
 .style_none li{word-wrap: break-word;}
-
-
-
+.sidebar .frame{overflow:hidden;}
+.popular_tags a{float:left;}
+.popular_tags a span{color:#666;font-size:12px;font-family:Verdana, Geneva, sans-serif;margin-left:5px;}
