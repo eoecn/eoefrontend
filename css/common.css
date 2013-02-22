@@ -1,3 +1,8 @@
+/*code样式*/
+.visitorList{height:100%;overflow:hidden;}
+.visitorList a{float:left;width:56px;overflow:hidden;margin-right:15px;_display:inline;vertical-align:middle;margin-bottom:8px;text-align:center;}
+.visitorList a img{width:46px;height:46px;overflow:hidden;}
+.visitorList a span{display:inline-block;height:20px;line-height:20px;overflow:hidden;font-size:12px;color:#666;text-align:center;}
 
 /*按钮，输入框样式*/
 .enTxt span,.enTxt .il,.enTxt .ir,.focTxt span,.focTxt .il,.focTxt .ir,.error .enTxt span,.error .enTxt .il,.error .enTxt .ir,.grayBtn span,.grayBtn .il,.grayBtn .ir,.grayBtn:hover span,.grayBtn:hover .il,.grayBtn:hover .ir,.redBtn span,.redBtn .il,.redBtn .ir,.redBtn:hover span,.redBtn:hover .il,.redBtn:hover .ir,.greenBtn span,.greenBtn .il,.greenBtn .ir,.greenBtn:hover span,.greenBtn:hover .il,.greenBtn:hover .ir  ,.blueBtn span,.blueBtn .il,.blueBtn .ir,.blueBtn:hover span,.blueBtn:hover .il,.blueBtn:hover .ir,.selBtn span,.selBtn .il,.selBtn .ir,.selBtn b{background:url(http://home.eoe.local/Public/default/common/images/btn.png) no-repeat;}
