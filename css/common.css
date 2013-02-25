@@ -130,3 +130,21 @@
 .popular_tags a{float:left;width: auto !important;max-width: 180px; overflow: hidden;font:12px/20px '宋体';color: #0088CC;white-space: nowrap;vertical-align: bottom;padding: 0 8px;margin-right: 5px;margin-top: 5px;background-color: #E0EAF1;border-bottom: 1px solid #3E6D8E;border-right: 1px solid #7F9FB6;}
 .popular_tags a:hover{color:#005580;text-decoration:none;}
 .popular_tags a span{color:#666;font-size:12px;font-family:Verdana, Geneva, sans-serif;margin-left:5px;}
+
+form {
+    margin: 0;
+}
+form {
+    margin: 0 0 20px;
+}
+body, input, button, select, textarea {
+    font-family: "微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+body {
+    color: #333333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+.sidebar .frame .popular_tags span{margin:0;}
