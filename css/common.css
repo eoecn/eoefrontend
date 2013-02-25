@@ -147,4 +147,4 @@ body {
     font-size: 14px;
     line-height: 20px;
 }
-.sidebar .frame .popular_tags span{margin:0;}
+.sidebar .frame .popular_tags span{font-size:12px;margin:0;}
