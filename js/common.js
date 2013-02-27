@@ -89,8 +89,7 @@ $(document).ready(function(){
 		$('.shade').css({'width':$(document).outerWidth(true),'height':$(document).outerHeight(true)}).show();		
 		$('.feedbackBox').css({'top':nTop+'px','left':nLeft+'px'}).show();
 		newBtn();		
-	})
-		
+	})		
 	$('.feedbackBox .feedTitle').mousedown(function(e){			
 		var e = e||event;
 		bDrag = true;		
@@ -114,9 +113,7 @@ $(document).ready(function(){
 			return false;	
 		})
 		return false;
-	})
-	
-	
+	})	
 	$('.feedbackBox .feedHide').click(function(){
 		$('.feedbackBox').hide();
 		$('.shade').hide();
@@ -143,11 +140,7 @@ $(document).ready(function(){
 			}
 		)
 	})
-	
-	
-})
-
-var newBtn = function(){
+	var newBtn = function(){
 	/*input输入框*/
 	if(!$('input.txt').parent().hasClass('enTxt')){
 		$('input.txt').wrap('<dfn class="enTxt"></dfn>').click(function(){
@@ -218,3 +211,7 @@ var newBtn = function(){
 			
 	})	
 }	
+	
+})
+
+
