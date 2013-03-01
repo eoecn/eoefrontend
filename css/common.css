@@ -115,8 +115,6 @@
 .feedContent label.first{float:left;line-height:30px;padding-right:8px;}
 .feedFooter{height:42px;padding:10px 25px;background-color:#e9e9e9;}
 
-
-
 /*code样式*/
 .visitorList{height:100%;overflow:hidden;}
 .visitorList a{float:left;width:56px;height:66px;overflow:hidden;margin: 0 8px 8px;vertical-align:middle;text-align:center;}
@@ -130,6 +128,9 @@
 .popular_tags a{float:left;width: auto !important;max-width: 180px; overflow: hidden;font:12px/20px '宋体';color: #0088CC;white-space: nowrap;vertical-align: bottom;padding: 0 8px;margin-right: 5px;margin-top: 5px;background-color: #E0EAF1;border-bottom: 1px solid #3E6D8E;border-right: 1px solid #7F9FB6;}
 .popular_tags a:hover{color:#005580;text-decoration:none;}
 .popular_tags a span{color:#666;font-size:12px;font-family:Verdana, Geneva, sans-serif;}
+/*返回顶部*/
+.backTop{display:none;width:33px;height:33px;cursor:pointer;background:url(../images/backTop.png) 0 0 no-repeat;position:fixed;bottom:224px;right:50%;margin-right: -540px;}
+
 
 form {
     margin: 0;
