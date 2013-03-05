@@ -48,37 +48,6 @@ function cl() {
 });
 
 
-
-// 添加最近访客列表
-$(document).ready(function(){
-  // 避免重复加载
-  if (($(".visitorList").length > 0) && !eoe.is_load_visitorList) { $.getJSON( 'http://code.eoe.' + eoe.domain + '/api/recent_visitors.json?pattern=' + eoe.app_item() + '&limit=42&app=' + eoe.app, function(data) {
-    // 用js来添加自己为最近访客，并排除自己访问自己的情况
-    var current_item_uid = 0;
-    if (eoe.app.match(/blog/i)) { current_item_uid = parseInt(($(".visitorList script").html() || "uid=").match(/uid=([0-9]*)/) || [])[1]; };
-    if (eoe.app.match(/code/i)) { current_item_uid = parseInt($(".span9 .author_name a").attr('href').match(/\/users\/([0-9]*)/)[1]); };
-
-    if ((eoe.uid != 0 ) && (current_item_uid != eoe.uid)) {
-      var current_uid_uname = [eoe.uid, eoe.uname];
-      data = _.reject(data, function(i) { return i[0] == current_uid_uname[0]; });
-      data.unshift(current_uid_uname);
-    }
-
-    // 追加访客节点
-    var dom = $(".visitorList");
-    $.each(data, function(idx, id_name) {
-      var img_html = $('<img>').attr('src', eoe.avatar(id_name[0]));
-      var a_html = $('<a>').attr('href', eoe.appUrl(id_name[0])).attr('title', id_name[1]).attr('target', '_blank').html(img_html);
-      $('<span>').html(id_name[1]).appendTo(a_html);
-      dom.append(a_html);
-    });
-
-    // 有数据就显示
-    if (data.length > 0) { $(".visitorList").parent(".frame").show(); };
-    eoe.is_load_visitorList = true;
-  }); };
-})
-
 /*反馈*/
 $(document).ready(function(){	
 	/*返回顶部*/
@@ -95,7 +64,7 @@ $(document).ready(function(){
 	})
 	
 /*反馈弹框*/		
-	$('body').prepend('<div class="feedback fix"></div><div class="shade fix"></div><div class="feedbackBox fix"><div class="feedTitle"><a href="javascript:;" class="feedHide"></a>给我们的建议</div><form><div class="feedContent"><p>感谢您使用eoe.cn，并将遇到的问题反馈给我们，我们会在第一时间处理；为了能快速定位和解决您遇到的问题,请将您的问题描述的稍微详细一些，谢谢你参与eoe产品完善。</p><div class="mt10 fix"><label class="first">问题类型</label><div class="selBox"><a href="javascript:;" class="selBtn"><i class="il"></i><span>bug</span><b><i class="ir"></i></b></a><div class="selList fix"><div class="dropCase"><div class="fix"><em class="em1">&nbsp;</em><em class="em2">&nbsp;</em><em class="em3">&nbsp;</em><em class="em4">&nbsp;</em></div><div class="dropContent fix"><ol><li><a href="javascript:void(0)" param="bug">bug</a></li><li><a href="javascript:void(0)" param="suggestion">建议</a></li><li><a href="javascript:void(0)" param="idea">想法</a></li><li><a href="javascript:void(0)" param="cooperation">合作</a></li><li><a href="javascript:void(0)" param="other">其它</a></li></ol><input name="type" class="feedbacktype" type="hidden" value="bug" /></div></div></div></div></div><div class="mt10 fix"><label>问题描述</label><textarea class="txt" cols="30" rows="10" name="content" placeholder="500字以内"></textarea></div><div class="mt10 fix"><label>联系方式（电子邮件/QQ）</label><input type="text" class="txt" name="contact"/></div></div><div class="feedFooter"><a href="javascript:;" class="newBtn blueBtn"><span><i class="il"></i><i class="ir"></i>提交反馈</span></a></div></form></div>')
+	$('body').prepend('<div class="feedback fix"></div><div class="shade fix"></div><div class="feedbackBox fix"><div class="feedTitle"><a href="javascript:;" class="feedHide"></a>给我们的建议</div><form><div class="feedContent"><p>感谢您使用eoe.cn，并将遇到的问题反馈给我们，我们会在第一时间处理；为了能快速定位和解决您遇到的问题,请将您的问题描述的稍微详细一些，谢谢你参与eoe产品完善。</p><div class="mt10 fix"><label class="first">问题类型</label><div class="selBox"><a href="javascript:;" class="selBtn"><i class="il"></i><span>bug</span><b><i class="ir"></i></b></a><div class="selList fix"><div class="dropCase"><div class="fix"><em class="em1">&nbsp;</em><em class="em2">&nbsp;</em><em class="em3">&nbsp;</em><em class="em4">&nbsp;</em></div><div class="dropContent fix"><ol><li><a href="javascript:void(0)" param="bug">bug</a></li><li><a href="javascript:void(0)" param="suggestion">建议</a></li><li><a href="javascript:void(0)" param="idea">想法</a></li><li><a href="javascript:void(0)" param="cooperation">合作</a></li><li><a href="javascript:void(0)" param="other">其它</a></li></ol><input name="type" class="feedbacktype" type="hidden" value="bug" /></div></div></div></div></div><div class="mt10 fix"><label>问题描述</label><textarea class="txt" cols="30" rows="10" name="eoe_feedback_content" placeholder="500字以内"></textarea></div><div class="mt10 fix"><label>联系方式（电子邮件/QQ）</label><input type="text" class="txt" name="eoe_feedback_contact"/></div></div><div class="feedFooter"><a href="javascript:;" class="newBtn blueBtn"><span><i class="il"></i><i class="ir"></i>提交反馈</span></a></div></form></div>')
 	var $box = $('.feedbackBox');
 	var bDrag = false;	
 	var nTop = ($(window).height() - $box.height())/2;
@@ -136,8 +105,8 @@ $(document).ready(function(){
 	$(".feedFooter a").click(function(){
 		var url = 'http://comment.eoe.'+document.location.hostname.split(".").pop();
 		var type = $("input.feedbacktype").val();
-		var content = $("textarea[name='content']").val();
-		var contact = $("input[name='contact']").val();
+		var content = $("textarea[name='eoe_feedback_content']").val();
+		var contact = $("input[name='eoe_feedback_contact']").val();
 		contact = contact?contact:"";
 		if(!content || content.length < 4)
 		{
@@ -150,8 +119,8 @@ $(document).ready(function(){
 					alert("谢谢您的反馈，我们会尽快处理！");
 					$('.feedbackBox').hide();
 					$('.shade').hide();
-					$("textarea[name='content']").val(null);
-					$("input[name='contact']").val(null);
+					$("textarea[name='eoe_feedback_content']").val(null);
+					$("input[name='eoe_feedback_contact']").val(null);
 				}else{
 					alert(data.info);
 				}	
@@ -229,5 +198,38 @@ $(document).ready(function(){
 	}	
 	
 })
+
+
+
+// 添加最近访客列表
+$(document).ready(function(){
+  // 避免重复加载
+  if (($(".visitorList").length > 0) && !eoe.is_load_visitorList) { $.getJSON( 'http://code.eoe.' + eoe.domain + '/api/recent_visitors.json?pattern=' + eoe.app_item() + '&limit=42&app=' + eoe.app, function(data) {
+    // 用js来添加自己为最近访客，并排除自己访问自己的情况
+    var current_item_uid = 0;
+    if (eoe.app.match(/blog/i)) { current_item_uid = parseInt(($(".visitorList script").html() || "uid=").match(/uid=([0-9]*)/) || [])[1]; };
+    if (eoe.app.match(/code/i)) { current_item_uid = parseInt($(".span9 .author_name a").attr('href').match(/\/users\/([0-9]*)/)[1]); };
+
+    if ((eoe.uid != 0 ) && (current_item_uid != eoe.uid)) {
+      var current_uid_uname = [eoe.uid, eoe.uname];
+      data = _.reject(data, function(i) { return i[0] == current_uid_uname[0]; });
+      data.unshift(current_uid_uname);
+    }
+
+    // 追加访客节点
+    var dom = $(".visitorList");
+    $.each(data, function(idx, id_name) {
+      var img_html = $('<img>').attr('src', eoe.avatar(id_name[0]));
+      var a_html = $('<a>').attr('href', eoe.appUrl(id_name[0])).attr('title', id_name[1]).attr('target', '_blank').html(img_html);
+      $('<span>').html(id_name[1]).appendTo(a_html);
+      dom.append(a_html);
+    });
+
+    // 有数据就显示
+    if (data.length > 0) { $(".visitorList").parent(".frame").show(); };
+    eoe.is_load_visitorList = true;
+  }); };
+})
+
 
 
