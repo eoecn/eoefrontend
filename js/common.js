@@ -82,8 +82,7 @@ $(document).ready(function(){
 })
 
 /*反馈*/
-
-jQuery(document).ready(function(){	
+$(document).ready(function(){	
 	/*返回顶部*/
 	$('body').prepend("<div class='backTop'></div>");
 	$(window).scroll(function(){
@@ -99,7 +98,6 @@ jQuery(document).ready(function(){
 	
 /*反馈弹框*/		
 	$('body').prepend('<div class="feedback fix"></div><div class="shade fix"></div><div class="feedbackBox fix"><div class="feedTitle"><a href="javascript:;" class="feedHide"></a>给我们的建议</div><form><div class="feedContent"><p>感谢您使用eoe.cn，并将遇到的问题反馈给我们，我们会在第一时间处理；为了能快速定位和解决您遇到的问题,请将您的问题描述的稍微详细一些，谢谢你参与eoe产品完善。</p><div class="mt10 fix"><label class="first">问题类型</label><div class="selBox"><a href="javascript:;" class="selBtn"><i class="il"></i><span>bug</span><b><i class="ir"></i></b></a><div class="selList fix"><div class="dropCase"><div class="fix"><em class="em1">&nbsp;</em><em class="em2">&nbsp;</em><em class="em3">&nbsp;</em><em class="em4">&nbsp;</em></div><div class="dropContent fix"><ol><li><a href="javascript:void(0)" param="bug">bug</a></li><li><a href="javascript:void(0)" param="suggestion">建议</a></li><li><a href="javascript:void(0)" param="idea">想法</a></li><li><a href="javascript:void(0)" param="cooperation">合作</a></li><li><a href="javascript:void(0)" param="other">其它</a></li></ol><input name="type" class="feedbacktype" type="hidden" value="bug" /></div></div></div></div></div><div class="mt10 fix"><label>问题描述</label><textarea class="txt" cols="30" rows="10" name="content" placeholder="500字以内"></textarea></div><div class="mt10 fix"><label>联系方式（电子邮件/QQ）</label><input type="text" class="txt" name="contact"/></div></div><div class="feedFooter"><a href="javascript:;" class="newBtn blueBtn"><span><i class="il"></i><i class="ir"></i>提交反馈</span></a></div></form></div>')
-	
 	var $box = $('.feedbackBox');
 	var bDrag = false;	
 	var nTop = ($(window).height() - $box.height())/2;
@@ -108,9 +106,7 @@ jQuery(document).ready(function(){
 		$('.shade').css({'width':$(document).outerWidth(true),'height':$(document).outerHeight(true)}).show();		
 		$('.feedbackBox').css({'top':nTop+'px','left':nLeft+'px'}).show();
 		newBtn();
-		
 	})
-		
 	$('.feedbackBox .feedTitle').mousedown(function(e){			
 		var e = e||event;
 		bDrag = true;		
@@ -134,9 +130,7 @@ jQuery(document).ready(function(){
 			return false;	
 		})
 		return false;
-	})
-	
-	
+	})	
 	$('.feedbackBox .feedHide').click(function(){
 		$('.feedbackBox').hide();
 		$('.shade').hide();
@@ -148,7 +142,10 @@ jQuery(document).ready(function(){
 		var contact = $("input[name='contact']").val();
 		contact = contact?contact:"";
 		if(!content || content.length < 4)
+		{
 			alert("请输入反馈内容");
+			return false;
+		};
 		$.getJSON(url+"/Like/userfeedback?callback=?&"+'type='+type+'&content='+content+'&contact='+contact,
 			function(data){
 				if(data.status == 1){
@@ -164,16 +161,14 @@ jQuery(document).ready(function(){
 		)
 	})
 	var newBtn = function(){
-		/*input输入框*/
-		if(!$('input.txt').parent().hasClass('enTxt')){
-			$('input.txt').wrap('<dfn class="enTxt"></dfn>').click(function(){
-				$('.enTxt').removeClass('focTxt');
-				$('.editTxt').removeClass('spotTxt');
-				$('.selList').hide();
-				$(this).attr('placeholder','').parents('.enTxt').addClass('focTxt');				
-				return false;
-			});
-		}
+		/*input输入框*/		
+		$('input.txt').wrap('<dfn class="enTxt"></dfn>').click(function(){
+			$('.enTxt').removeClass('focTxt');
+			$('.editTxt').removeClass('spotTxt');
+			$('.selList').hide();
+			$(this).attr('placeholder','').parents('.enTxt').addClass('focTxt');				
+			return false;
+		});		
 		/*textarea输入框*/
 		$('textarea.txt').wrap('<div class="editTxt"></div>').click(function(){
 			$('.editTxt').removeClass('spotTxt');
@@ -203,7 +198,7 @@ jQuery(document).ready(function(){
 					$('.selBtn b').bind('mouseenter mouseleave',function(){
 						$(this).toggleClass('bHover');
 					});
-				}
+				};
 				return false;											
 			}									
 		})
@@ -224,13 +219,13 @@ jQuery(document).ready(function(){
 		$(document).click(function(){
 			if($('.enTxt').hasClass('focTxt')){
 				$('.enTxt').removeClass('focTxt');
-			}
+			};
 			if($('.selBtn b').hasClass('bHover')){
 				$('.selBtn b').removeClass('bHover').parents('.selBox').children('.selList').hide();		
-			}
+			};
 			if($('.editTxt').hasClass('spotTxt')){
 				$('.editTxt').removeClass('spotTxt');
-			}
+			};
 				
 		})	
 	}	
