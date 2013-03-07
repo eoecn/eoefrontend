@@ -27,8 +27,8 @@ function cl() {
   app: location.hostname.split(':')[0].split(".")[0].replace(/^my$/, 'blog'),
   domain: location.hostname.split(':')[0].split(".").pop(),
   uid: parseInt((document.cookie.match(/uid=([0-9]+)/) || [0,0])[1]),
-  uname: decodeURI((document.cookie.match(/uname=([^\;]*);?/) || ['',''])[1].trim()),
-  uhash: (document.cookie.match(/uhash=([a-z0-9]{32})/i) || ['',''])[1].trim(),
+  uname: $.trim(decodeURI((document.cookie.match(/uname=([^\;]*);?/) || ['',''])[1])),
+  uhash: $.trim((document.cookie.match(/uhash=([a-z0-9]{32})/i) || ['',''])[1]),
   avatar: function(uid) { return "http://www.eoeandroid.com/uc_server/avatar.php?size=small&uid=" + uid; },
   homeUrl: function(uid) { return "http://my.eoe." + this.domain + '/' + uid; },
   // blog, code等应用下每个用户的主页URL
