@@ -129,7 +129,7 @@
 .popular_tags a:hover{color:#005580;text-decoration:none;}
 .popular_tags a span{color:#666;font-size:12px;font-family:Verdana, Geneva, sans-serif;}
 /*返回顶部*/
-.backTop{display:none;width:33px;height:33px;cursor:pointer;background:url(../images/backTop.png) 0 0 no-repeat;position:fixed;bottom:224px;right:50%;margin-right: -540px;}
+.backTop{display:none;width:33px;height:33px;cursor:pointer;background:url(../images/backTop.png) 0 0 no-repeat;position:fixed;bottom:215px;right:50%;margin-right: -540px;}
 
 
 form {
