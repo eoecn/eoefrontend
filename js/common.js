@@ -205,7 +205,7 @@ $(document).ready(function(){
 // 添加最近访客列表
 $(document).ready(function(){
   // 避免重复加载
-  if (($(".visitorList").length > 0) && !eoe.is_load_visitorList) { $.getJSON( 'http://code.eoe.' + eoe.domain + '/api/recent_visitors.json?pattern=' + eoe.app_item() + '&limit=42&app=' + eoe.app, function(data) {
+  if (($(".visitorList").length > 0) && !eoe.visitor_list) { $.getJSON( 'http://code.eoe.' + eoe.domain + '/api/recent_visitors.json?pattern=' + eoe.app_item() + '&limit=42&app=' + eoe.app, function(data) {
     // 用js来添加自己为最近访客，并排除自己访问自己的情况
     var current_item_uid = 0;
     if (eoe.app.match(/blog/i)) { current_item_uid = parseInt(($(".visitorList script").html() || "uid=").match(/uid=([0-9]*)/) || [])[1]; };
@@ -221,14 +221,14 @@ $(document).ready(function(){
     var dom = $(".visitorList");
     $.each(data, function(idx, id_name) {
       var img_html = $('<img>').attr('src', eoe.avatar(id_name[0]));
-      var a_html = $('<a>').attr('href', eoe.appUrl(id_name[0])).attr('title', id_name[1]).attr('target', '_blank').html(img_html);
+      var a_html = $('<a>').attr('href', eoe.appUrl(id_name[0])).attr('title', decodeURI(id_name[1])).attr('target', '_blank').html(img_html);
       $('<span>').html(id_name[1]).appendTo(a_html);
       dom.append(a_html);
     });
 
     // 有数据就显示
     if (data.length > 0) { $(".visitorList").parent(".frame").show(); };
-    eoe.is_load_visitorList = true;
+    eoe.visitor_list = data;
   }); };
 })
 
