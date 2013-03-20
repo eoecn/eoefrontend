@@ -56,18 +56,22 @@
 ;(function(){
 	$.newBtn = function(){
 		/*input输入框*/		
-		if($('dfn.enTxt').length<1){
-			$('input.txt').wrap('<dfn class="enTxt"></dfn>').focus(function(){
-				$(this).attr({placeholder:""}).parent().addClass("focTxt");	
-			}).blur(function(){
-				$(this).parent().removeClass("focTxt");	
+		
+			$('input.txt').each(function(){
+				$(this).wrap('<dfn class="enTxt"></dfn>').focus(function(){
+					$(this).attr({placeholder:""}).parent().addClass("focTxt");	
+				}).blur(function(){
+					$(this).parent().removeClass("focTxt");	
+				})
 			})
-		}
+		
 		/*textarea输入框*/
-		$("textarea.txt").wrap('<dfn class="editTxt"></dfn>').focus(function(){
-			$(this).attr({placeholder:""}).parent().addClass("spotTxt");
-		}).blur(function(){
-			$(this).parent().removeClass("spotTxt");			
+		$("textarea.txt").each(function(){
+			$(this).wrap('<dfn class="editTxt"></dfn>').focus(function(){
+				$(this).attr({placeholder:""}).parent().addClass("spotTxt");
+			}).blur(function(){
+				$(this).parent().removeClass("spotTxt");			
+			})
 		})
 		/*仿select选择框*/
 		$("div.selBox b").bind("mouseenter mouseleave",function(){
