@@ -15,7 +15,7 @@
 				$('div.feedback').click(function(){
 					var nTop = ($(window).height()-$('div.feedbackBox').height())/2;
 					var nLeft = ($(window).width()-$('div.feedbackBox').width())/2;
-					$('div.shade').css({width:$(document).outerWidth(true),height:$(document).outerHeight(true)}).show('fast');
+					$('div.shade').css({width:$(document).outerWidth(true),height:$(document).outerHeight(true)}).show();
 					$('div.feedbackBox').css({top:nTop,left:nLeft}).show();	
 					$.newBtn();				
 				})
@@ -40,9 +40,9 @@
 					}
 					$.getJSON(url+"/like/userfeedback?callback=?&"+"type="+type+"&content="+content+"&contact="+contact,function(data){
 						if(data.status==1){
-							alert(defaults.succeed);							
+							$('textarea[name="eoe_feedback_content"],input[name="eoe_feedback_contact"]').val(null);
 							$('div.feedbackBox,div.shade').hide();
-							$('textarea[name="eoe_feedback_content"],input[name="eoe_feedback_contact"]').val(null);							
+							alert(defaults.succeed);
 						}else{
 							alert(data.info);
 						}
@@ -70,34 +70,32 @@
 			$(this).parent().removeClass("spotTxt");			
 		})
 		/*仿select选择框*/
-		$("div.selBox b").bind({
-			'mouseenter mouseleave':function(){
-				$(this).toggleClass('bHover');					
-			},
-			'click':function(){	
-				$('div.selList').toggle();			
-				if($("div.selList").css('display')=="block"){
-					$('.selBtn b').unbind('mouseenter mouseleave').addClass('bHover');						
-				}else{
-					$('.selBtn b').bind('mouseenter mouseleave',function(){
-						$(this).toggleClass('bHover');
-					})						
-				}
-			}
+		$("div.selBox b").bind("mouseenter mouseleave",function(){
+			$(this).toggleClass("bHover");	
+		}).click(function(){
+			$(this).unbind("mouseenter mouseleave").addClass('bHover').parents("div.selBox").children("div.selList").show();
+			return false;
 		})
-		$('.selList li').bind({
-			'mouseenter':function(){
-				$(this).addClass('on').children('a').css('color','#fff');											
-			},
-			'mouseleave':function(){
-				$(this).removeClass('on').children('a').css('color','#333');
-			},
-			'click':function(){
+		$("div.selList li").bind({
+			"mouseenter mouseleave":function(){
+				$(this).toggleClass('on');
+			},			
+			"click":function(){
 				var valTxt = $(this).children('a').text();
 				var valValue = $(this).children('a').attr("param");
 				$("input.feedbacktype").val(valValue);
-				$(this).parents('.selBox').children('.selBtn').children('span').text(valTxt).end().parents(".selBox").children('div.selList').hide();				
+				$(this).parents('div.selBox').children("a.selBtn").find('span').text(valTxt).end().find("b").removeClass("bHover").bind("mouseenter mouseleave",function(){
+						$(this).toggleClass("bHover");	
+				});
+				$(this).parents('div.selList').hide();
 			}
+		})
+		$(document).click(function(){
+			if($('.selBtn b').hasClass('bHover')){
+				$('.selBtn b').removeClass('bHover').bind("mouseenter mouseleave",function(){
+					$(this).toggleClass("bHover");	
+				}).parents('.selBox').children('.selList').hide();
+			} 	
 		})
 	}
 })(jQuery)
