@@ -39,8 +39,11 @@
 .selBtn b.bHover .ir{background-position: -286px -115px;}
 .selBtn b.bHover{background-position: -256px -115px;}
 .selList{position:absolute;left:0px;top:32px;display:none;}
-.selList li a:hover{text-decoration:none;}
+.selList li a{color:#333;}
 .selList li.on{background-color:#0050a9;}
+.selList li.on a{color:#fff;}
+.selList li a:hover,.selList li.on a:hover{text-decoration:none;}
+
 
 /*灰色下拉框*/
 .dropCase{width:160px;position:relative;}
