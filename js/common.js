@@ -72,7 +72,7 @@ $(document).ready(function(){
     $.each(data, function(idx, id_name) {
       var img_html = $('<img>').attr('src', eoe.avatar(id_name[0]));
       var a_html = $('<a>').attr('href', (eoe.appUrl(id_name[0]) + '?&f_section=lastvisitor')).attr('title', decodeURI(id_name[1])).attr('target', '_blank').html(img_html);
-      $('<span>').html(id_name[1]).appendTo(a_html);
+      $('<span>').html(decodeURI(id_name[1])).appendTo(a_html);
       dom.append(a_html);
     });
 
