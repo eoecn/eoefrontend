@@ -41,6 +41,12 @@ function cl() {
   },
   // blog, code等应用详情页的item id
   app_item_id: function() { return this.app_item(); },
+  app_uid_or_uname: function() {
+    return ({
+     code: function() { },
+     blog: function() { return location.pathname.split('/')[1];  }
+    }[this.app])();
+  },
   // full original path
   fp: location.href.match(/http:\/\/[^/]*(\/.*)/)[1],
 
