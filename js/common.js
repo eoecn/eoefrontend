@@ -41,10 +41,10 @@ function cl() {
   },
   // blog, code等应用详情页的item id
   app_item_id: function() { return this.app_item(); },
-  app_uid_or_uname: function() {
+  visitor_list_pattern: function() {
     return ({
-     code: function() { },
-     blog: function() { return location.pathname.split('/')[1];  }
+     code: function() { var m = location.pathname.match(/\/([0-9]*)/); return m ? m[1] : 0; },
+     blog: function() { return $("meta[name=keywords]").attr("author_id"); }
     }[this.app])();
   },
   // full original path
@@ -61,7 +61,7 @@ function cl() {
 // 添加最近访客列表
 $(document).ready(function(){
   // 避免重复加载
-  if (($(".visitorList").length > 0) && !eoe.visitor_list) { $.getJSON( 'http://code.eoe.' + eoe.domain + '/api/recent_visitors.json?pattern=' + eoe.app_item() + '&limit=42&app=' + eoe.app, function(data) {
+  if (($(".visitorList").length > 0) && !eoe.visitor_list) { $.getJSON( 'http://code.eoe.' + eoe.domain + '/api/recent_visitors.json?pattern=' + eoe.visitor_list_pattern() + '&limit=42&app=' + eoe.app, function(data) {
     // 用js来添加自己为最近访客，并排除自己访问自己的情况
     var current_item_uid = 0;
     if (eoe.app.match(/blog/i)) { current_item_uid = parseInt(($(".visitorList script").html() || "uid=").match(/uid=([0-9]*)/) || [])[1]; };
