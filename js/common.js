@@ -44,7 +44,7 @@ function cl() {
   visitor_list_pattern: function() {
     return ({
      code: function() { var m = location.pathname.match(/\/([0-9]*)/); return m ? m[1] : 0; },
-     blog: function() { return $("meta[name=keywords]").attr("author_id"); }
+     blog: function() { return $("meta[name=author]").attr("author_id"); }
     }[this.app])();
   },
   // full original path
